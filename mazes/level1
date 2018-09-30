@@ -1,0 +1,21 @@
+29 : 19 : 1
+O O O O x O O O O O O O O O O O O O O O O O O O O x O O O
+O x x x x x x x O x x x x x O x x x x x O x O O x x x x O
+O x O O O O O x O O O O O x O x O O O x O x O O x O O x O
+O x O x x x x x x x x x O x x x O x x x x x O x x O O x O
+O x O x O O O O O O O x O x O O O x O x O x O x O O x x O
+x x O x O x O x x x O x O x x x O x O x O x O x O O k O x
+O x O x O x O x x x O x O O O x O x O x O x x x O O O O O
+O x O x O x O x O x O x x x x x O x O x O x O x O x O O O
+O O O O O O O O O x O O O O x O O x O O O x O x x x O O O
+O x O x x x x x O x x x x O s O x x O x x x O O O O O O O
+O x O O O O O x O O O O O O O O O x O x O O O O O O O O O
+O x x x x x x x x x O x x x x x x x O x x x x x O O O O O
+O x O O O O O x O O O x O O O O O O O O O x O x O O O O O
+x x O x x x x x x x O x O x O x x x x x O x O x x x x x x
+O O O O O x O x O x O x O x O O O O O x O x O O O O x O O
+O x x x x x O x O x x x O x x x x x x x x x O O O x x O O
+O x O O O O O O O O x O O O O O x O O O O O O O O x O O O
+O x x x x x f O x x x x x x O O x x x x x x x x x x O O O
+O O O O x O O O x O O O O x O O x O O O O O O O O x O O O
+/*Grammar: <width>:<height>:<characters>*/
