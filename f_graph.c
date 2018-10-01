@@ -3,7 +3,6 @@
 #include "f_graph.h"
 
 /* ==========  ========== ========== ========= */
-/*       Graphs - library for management       */
 /*           Author - Daniele Cuomo            */
 /* ========== ========== ========== ========== */
 
