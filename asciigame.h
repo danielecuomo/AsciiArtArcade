@@ -3,9 +3,9 @@
 
 #include "mazelib.h"
 
-	/* ==========  ========== ========== ========= */
-	/*      Autore - Daniele Cuomo N8601346        */
-	/* ========== ========== ========== ========== */
+/* ==========  ========== ========== ========= */
+/*            Autore - Daniele Cuomo           */
+/* ========== ========== ========== ========== */
 
 /*Fare riferimento alla tabella ASCII*/
 #define SPACE 	32
@@ -15,23 +15,23 @@ typedef int (* MOVECH)( graph * , int , int * );
 /*Tipo di funzione generica: spostamento personaggio*/
 
 typedef struct character{
-	char id;		/*Carattere che identifica il personaggio*/
-	int color;		/*Colore del personaggio*/
-	int *pos;		/*Intero che codifica la posizione del personaggio*/
-	int *t;			/*Intero che codifica il bersaglio da raggiungere*/
-	int speed;		/*Velocità del personaggio: si muove ogni x turni, dove x dipende dal valore di speed*/
+	char id;	/*Carattere che identifica il personaggio*/
+	int color;	/*Colore del personaggio*/
+	int *pos;	/*Intero che codifica la posizione del personaggio*/
+	int *t;		/*Intero che codifica il bersaglio da raggiungere*/
+	int speed;	/*Velocità del personaggio: si muove ogni x turni, dove x dipende dal valore di speed*/
 	bool powerup;	/*Nel caso del protagonista, powerup e' vero se il giocatore e' passato sul nodo pow*/
-	int time;		/*La variabile time memorizza il turno in cui viene attivato il powerup*/
+	int time;	/*La variabile time memorizza il turno in cui viene attivato il powerup*/
 	MOVECH movech;
 }character;
 /*----- Personaggio generico del gioco ------*/
 
 typedef struct level{
-	graph *G;		/*Grafo con i nodi del labirinto*/
+	graph *G;	/*Grafo con i nodi del labirinto*/
 	character *ch; 	/*La prima locazione e' riservata al protagonista*/
-	int CHSIZE;		/*Numero di personaggi*/
+	int CHSIZE;	/*Numero di personaggi*/
 	int respawn;	/*Intero che codifica la posizione di respawn (-1 = !respawn)*/
-	int exit;		/*Intero che codifica la posizione dell'uscita*/
+	int exit;	/*Intero che codifica la posizione dell'uscita*/
 }level_t;
 /*----- Struttura per un livelo di gioco ----*/
 
