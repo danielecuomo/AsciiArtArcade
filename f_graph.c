@@ -3,10 +3,10 @@
 #include "f_graph.h"
 
 /* ==========  ========== ========== ========= */
-/*           Author - Daniele Cuomo            */
+/*           Autore - Daniele Cuomo            */
 /* ========== ========== ========== ========== */
 
-/*-------- Visits: BFS, Dijkstra, A* ---------*/
+/*-------- Visite: BFS, Dijkstra, A* ---------*/
 int *bfs_visit( graph *G , int s , int t ){
 	int v, i, u;
 	int *pred = init_bfs( G->size );				/*Inizializzazione visita*/
