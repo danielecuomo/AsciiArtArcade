@@ -4,7 +4,7 @@ This abstraction allows a high independence from the data structures that encode
 
 Quick Game
 
-Step #1 - install
+Step #1 - install\n
 apt-get install ncurses-dev
 
 Step #2 - compile
