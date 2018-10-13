@@ -1,11 +1,11 @@
 #include <ncurses.h>
 #include <string.h>
 
-#include "huskygame.h"
+#include "asciigame.h"
 
-	/* ==========  ========== ========== ========= */
-	/*      Autore - Daniele Cuomo N8601346        */
-	/* ========== ========== ========== ========== */
+/* ==========  ========== ========== ========= */
+/*            Autore - Daniele Cuomo           */
+/* ========== ========== ========== ========== */
 
 void start_game( void );
 /*Inizializzazione partita*/
@@ -24,15 +24,15 @@ int get_choice( int , int , char * );
 
 int main( int argc , char **argv ){
 	int i;
-	start_game();										/*Inizializzazione curses-mode*/
+	start_game();							/*Inizializzazione curses-mode*/
 	for( i=1 ; i<argc && play_level( argv[i] ) ; i++ );
-	game_over( i == argc );								/*Stampa delle informazioni di fine partita*/
+	game_over( i == argc );						/*Stampa delle informazioni di fine partita*/
 }
 
 void start_game( ){
-	initscr();											/*Inizia la modalità curses*/
-	keypad(stdscr, TRUE);								/*Abilita la lettura dei tasti speciali*/
-	start_color();										/*Inizializzazione funzionalita' dei colori*/
+	initscr();							/*Inizia la modalità curses*/
+	keypad(stdscr, TRUE);						/*Abilita la lettura dei tasti speciali*/
+	start_color();							/*Inizializzazione funzionalita' dei colori*/
 
 	/*Definizione coppie di colori*/
 	init_pair(1, COLOR_BLUE, COLOR_BLACK);
@@ -40,17 +40,17 @@ void start_game( ){
 	init_pair(3, COLOR_RED, COLOR_BLACK);
 	init_pair(4, COLOR_WHITE, COLOR_WHITE);
 	DELAY = 120000;
-	noecho();											/*Stampa a video del buffer disabilitata*/
-	curs_set(0);										/*Visualizzazione del cursore disabilitata*/
-	menu();												/*Mostra il menu pre-gioco*/
-	set_cb();											/*Imposta le callback specifiche per le visite dei labirinti*/
-	ungetc( SPACE , stdin ); 							/*Prima mossa, SPACE di default*/
+	noecho();							/*Stampa a video del buffer disabilitata*/
+	curs_set(0);							/*Visualizzazione del cursore disabilitata*/
+	menu();								/*Mostra il menu pre-gioco*/
+	set_cb();							/*Imposta le callback specifiche per le visite dei labirinti*/
+	ungetc( SPACE , stdin ); 					/*Prima mossa, SPACE di default*/
 	SCORE = 0;
-	nodelay(stdscr,TRUE); 								/*Lettura da tastiera non-bloccante*/
+	nodelay(stdscr,TRUE); 						/*Lettura da tastiera non-bloccante*/
 }
 
 void game_over( bool has_win ){
-	clear();											/*Libera lo schermo*/
+	clear();							/*Libera lo schermo*/
 	char *res, out[100];
 	if( has_win )
 		res = "Vittoria!";
@@ -58,30 +58,30 @@ void game_over( bool has_win ){
 		res = "Sconfitta!";
 	sprintf( out , "%s - Punteggio = %d" , res , SCORE );
 	attron( A_BOLD );
-	mvprintw( LINES/2 , (COLS - strlen(out))/2 , out );	/*Stampa al centro dello schermo*/
+	mvprintw( LINES/2 , (COLS - strlen(out))/2 , out );		/*Stampa al centro dello schermo*/
 	attroff( A_BOLD );
 	refresh();
-	nodelay(stdscr,FALSE);								/*Lettura da tastiera bloccante*/
-	flushinp();											/*Svuota il buffer*/
-	getch();											/*Aspetta un input dall'utente prima di chiudersi*/
+	nodelay(stdscr,FALSE);						/*Lettura da tastiera bloccante*/
+	flushinp();							/*Svuota il buffer*/
+	getch();							/*Aspetta un input dall'utente prima di chiudersi*/
 	endwin();
 }
 
 void set_cb( ){
 	adiac = adiac_I;
 	weight = weight_I;
-	h = manhattan_distance;								/*h -> stima euristica*/
-	set_heap_callbacks();								/*Imposta le callback per le code a priorita'*/
+	h = manhattan_distance;						/*h -> stima euristica*/
+	set_heap_callbacks();						/*Imposta le callback per le code a priorita'*/
 }
 
 void menu(){
 	bool start = false;
-	char *copyr = " HuskyGame: Daniele Cuomo N8601346";
+	char *copyr = " Ascii Game: Daniele Cuomo";
 	int y = (LINES/2), x = (COLS - strlen(copyr) - 1)/2;
 	while( !start ){
 		switch(get_choice( y , x , copyr )){
 			case 0: start = true; break;			/*L'utente ha scelto l'opzione 'Start game'*/
-			case 1: show_help(); break;				/*L'utente ha scelto l'opzione 'Help'*/
+			case 1: show_help(); break;			/*L'utente ha scelto l'opzione 'Help'*/
 			case 2: show_bar( y+2 , x+14 ); break;
 			case 3: endwin(); exit(1); break;		/*L'utente ha scelto l'opzione 'Exit'*/
 		}
@@ -101,7 +101,7 @@ int get_choice( int y , int x , char *copyr ){
 	for( i=0 ; i<4 ; i++ )
 		mvprintw( y + i, x + 2 , menu[i] );
 
-	int cur = 0;										/*Cursore*/
+	int cur = 0;								/*Cursore*/
 	mvaddch( y + cur , x , 187 | A_ALTCHARSET );
 	while( (c = getch()) != '\n' ){						/*Continua finche' l'utente non preme invio*/
 		mvaddch( y + cur , x , ' ' );
@@ -109,7 +109,7 @@ int get_choice( int y , int x , char *copyr ){
 			case KEY_DOWN: 	cur = (cur + 1)%4; break;
 			case KEY_UP:	cur = (cur + 3)%4; break;
 		}
-		mvaddch( y + cur , x , 187 | A_ALTCHARSET );	/*Movimento cursore*/
+		mvaddch( y + cur , x , 187 | A_ALTCHARSET );			/*Movimento cursore*/
 	}
 	return cur;
 }
@@ -121,8 +121,8 @@ void show_help( ){
 	char *info3 = ") to go to next level.\n\nESC to pause\nARROW KEYS to move\nSPACE to stop\nCTRL+C to quit the game";
 	printw( info1 ); addch( 231 | A_ALTCHARSET );
 	printw( info2 ); addch( ACS_PI ); printw( info3 );
-	refresh();											/*Stampa effettiva*/
-	getch();											/*Attesa di un input dall'utente*/
+	refresh();								/*Stampa effettiva*/
+	getch();								/*Attesa di un input dall'utente*/
 }
 
 void set_delay( int cur ){

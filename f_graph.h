@@ -10,15 +10,14 @@
 #define GREY -1
 #define BLACK 1
 
-	/* ==========  ========== ========== ========= */
-	/*      Grafi - Libreria per la gestione       */
-	/*      Autore - Daniele Cuomo N8601346        */
-	/* ========== ========== ========== ========== */
+/* ==========  ========== ========== ========= */
+/*           Autore - Daniele Cuomo            */
+/* ========== ========== ========== ========== */
 
 typedef struct G_graph{
 	int size;
-	int l;			/*Larghezza, utile per i labirinti*/
-	int h;			/*Altezza, utile per i labirinti*/
+	int l;		/*Larghezza, utile per i labirinti*/
+	int h;		/*Altezza, utile per i labirinti*/
 	void **nodes;	/* list ** || float ** || maze_t ** */
 }graph;
 
@@ -37,8 +36,8 @@ EURISTIC	h;
 
 /*------- Strutture dati per le visite -------*/
 int *colour;	/*Array per tenere traccia dei nodi visitati (BFS, A*)*/
-float *d;		/*Stima delle distanze (Dijkstra, A*)*/
-float *g;		/*Peso totale del miglior percorso trovato (A*)*/
+float *d;	/*Stima delle distanze (Dijkstra, A*)*/
+float *g;	/*Peso totale del miglior percorso trovato (A*)*/
 void **addr;	/*Associa il vertice i-esimo al nodo nello heap, permette di accedere a tempo costante alla locazione della coda (A*)*/
 queue *Open;	/*Coda di priorita' (Dijkstra, A*)*/
 /*--------------------------------------------*/
@@ -56,12 +55,13 @@ int *astar( graph * , int , int );
 void relax( graph * , int , int , int * );
 /*Verifica se e' possibile ottenere un percorso migliore, algoritmo di Dijkstra*/
 int extract_index( queue * );
-/*Risale all'indice del vertice sfruttando le propriet‡ dell'array*/
+/*Risale all'indice del vertice sfruttando le propriet√† dell'array*/
 void insert( queue * , int , int , float , int * );
 /*(re)Inserisce la nuova stima*/
 void update_estimate( queue * , int , int , float , int * );
 /*Aggiorna la stima migliorata*/
-	/*Inizializzazione visite*/
+
+/*Inizializzazione visite*/
 int *init_bfs( int );
 int *init_visit( int );
 int *init_dij( int , int );
