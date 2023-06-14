@@ -11,4 +11,4 @@ Step #2 - compile <br />
 gcc *.c -o asciigame -lncurses -lm
 
 Step #3 - execute <br />
-./asciigame level1 level2 level3
+./asciigame level1 level2 tribute
